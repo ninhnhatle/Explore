@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kho Trò Chơi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon" aria-hidden="true">🎮</span>
+        <div>
+          <h1>Kho Trò Chơi</h1>
+          <p class="tagline">Chọn trò — chơi ngay!</p>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hub: chọn trò -->
+      <section id="view-hub" class="view active">
+        <h2 class="section-title">Trò có sẵn</h2>
+        <div class="game-grid" id="built-in-games"></div>
+
+        <h2 class="section-title">Trò của bạn</h2>
+        <p class="hint" id="custom-empty">Chưa có trò tự thêm. Dùng form bên dưới để tạo mới.</p>
+        <div class="game-grid" id="custom-games"></div>
+
+        <div class="add-game-panel">
+          <h2 class="section-title">Tạo thêm trò chơi</h2>
+          <form id="form-add-game" class="add-form" autocomplete="off">
+            <label>
+              Tên trò
+              <input type="text" name="title" required maxlength="60" placeholder="Ví dụ: Đoán cờ" />
+            </label>
+            <label>
+              Biểu tượng (emoji)
+              <input type="text" name="emoji" maxlength="4" placeholder="🎯" />
+            </label>
+            <label>
+              Mô tả ngắn
+              <textarea name="description" rows="2" maxlength="200" placeholder="Trò chơi sẽ làm gì?"></textarea>
+            </label>
+            <label>
+              Màu thẻ
+              <select name="accent">
+                <option value="coral">San hô</option>
+                <option value="mint">Bạc hà</option>
+                <option value="sun">Vàng nắng</option>
+                <option value="lavender">Tím nhạt</option>
+                <option value="sky">Xanh trời</option>
+              </select>
+            </label>
+            <button type="submit" class="btn btn-primary">Thêm vào kho</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Trò: Hỏi nhanh đáp lẹ -->
+      <section id="view-quiz" class="view">
+        <div class="quiz-top">
+          <button type="button" class="btn btn-ghost" id="quiz-back">← Về kho</button>
+          <div class="quiz-stats">
+            <span class="pill">Câu <strong id="quiz-q-num">1</strong>/<span id="quiz-q-total">5</span></span>
+            <span class="pill pill-score">Điểm: <strong id="quiz-score">0</strong></span>
+          </div>
+        </div>
+        <div class="quiz-card">
+          <div class="timer-wrap">
+            <div class="timer-bar" id="quiz-timer-bar"></div>
+            <span class="timer-text"><span id="quiz-timer-sec">15</span>s</span>
+          </div>
+          <p class="quiz-question" id="quiz-question">Câu hỏi</p>
+          <div class="quiz-options" id="quiz-options"></div>
+          <p class="quiz-feedback" id="quiz-feedback" hidden></p>
+        </div>
+        <div class="quiz-actions">
+          <button type="button" class="btn btn-primary" id="quiz-next" hidden>Câu tiếp →</button>
+        </div>
+      </section>
+
+      <!-- Trò tùy chỉnh (placeholder) -->
+      <section id="view-custom" class="view">
+        <button type="button" class="btn btn-ghost" id="custom-back">← Về kho</button>
+        <div class="placeholder-card" id="custom-placeholder"></div>
+      </section>
+
+      <!-- Kết quả quiz -->
+      <section id="view-quiz-result" class="view">
+        <div class="result-card">
+          <h2>Hoàn thành!</h2>
+          <p class="result-score">Điểm của bạn: <strong id="result-score">0</strong></p>
+          <p class="result-detail" id="result-detail"></p>
+          <div class="result-actions">
+            <button type="button" class="btn btn-primary" id="result-replay">Chơi lại</button>
+            <button type="button" class="btn btn-secondary" id="result-home">Về kho trò</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <small>Kho Trò Chơi — HTML &amp; CSS &amp; JS</small>
+    </footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
